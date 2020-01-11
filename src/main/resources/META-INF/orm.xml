@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings xmlns="http://xmlns.jcp.org/xml/ns/persistence/orm"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence/orm http://xmlns.jcp.org/xml/ns/persistence/orm_2_1.xsd"
+    version="2.1">
+    <persistence-unit-metadata>
+       <persistence-unit-defaults>
+         <entity-listeners>
+           <entity-listener class="net.tiny.dao.AuditingEntityListener"></entity-listener>
+         </entity-listeners>
+       </persistence-unit-defaults>
+     </persistence-unit-metadata>
+     <!-- Application Queries -->
+     <named-query name="Admin.findByUsername">
+        <query><![CDATA[
+        select a from Admin a where lower(a.username) = :username
+        ]]></query>
+     </named-query>
+     <named-query name="Tag.findList">
+       <query>
+        select t from Tag t where t.type = :type order by t.order ASC
+       </query>
+     </named-query>
+
+     <!-- place more queries here -->
+</entity-mappings>

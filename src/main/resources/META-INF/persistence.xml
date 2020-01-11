@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence
+    xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence    http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"
+    version="2.1">
+    <persistence-unit name="persistenceUnit" transaction-type="RESOURCE_LOCAL">
+        <mapping-file>META-INF/orm.xml</mapping-file>
+        <!-- Basic Entities -->
+        <class>net.tiny.dao.converter.LocalDateAttributeConverter</class>
+        <class>net.tiny.dao.converter.LocalDateTimeAttributeConverter</class>
+        <class>net.tiny.dao.entity.BaseEntity</class>
+        <class>net.tiny.dao.entity.OrderEntity</class>
+        <class>net.tiny.dao.entity.LockableEntity</class>
+
+        <!-- Application Entities -->
+        <class>net.tiny.feature.entity.BaseCategory</class>
+        <class>net.tiny.feature.entity.Ad</class>
+        <class>net.tiny.feature.entity.AdPosition</class>
+        <class>net.tiny.feature.entity.Admin</class>
+        <class>net.tiny.feature.entity.Article</class>
+        <class>net.tiny.feature.entity.ArticleCategory</class>
+        <class>net.tiny.feature.entity.Author</class>
+        <class>net.tiny.feature.entity.Log</class>
+        <class>net.tiny.feature.entity.Role</class>
+        <class>net.tiny.feature.entity.Tag</class>
+        <class>net.tiny.feature.entity.Thema</class>
+
+        <class>net.tiny.feature.entity.Company</class>
+        <class>net.tiny.feature.entity.Seeker</class>
+        <class>net.tiny.feature.entity.Education</class>
+        <class>net.tiny.feature.entity.Field</class>
+        <class>net.tiny.feature.entity.Job</class>
+        <class>net.tiny.feature.entity.JobCategory</class>
+        <class>net.tiny.feature.entity.ReviewKeyword</class>
+        <class>net.tiny.feature.entity.ReviewKeywordCategory</class>
+        <class>net.tiny.feature.entity.secure.Contact</class>
+        <class>net.tiny.feature.entity.secure.Personal</class>
+
+        <exclude-unlisted-classes>false</exclude-unlisted-classes>
+        <!-- <jar-file>file:./</jar-file> -->
+        <!-- <jar-file>file:/src/main/webapp/WEB-INF/classes</jar-file> -->
+    </persistence-unit>
+
+</persistence>

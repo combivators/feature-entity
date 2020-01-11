@@ -1,0 +1,15 @@
+INSERT INTO JOBTYPE_FULL_LARGE (CODE,LABEL,SUMMARY_TEXT) VALUES ('01','営業','法人・個人・MR、テレマーケティング、キャリアカウンセラー、人材コーディネーターなど');
+INSERT INTO JOBTYPE_FULL_LARGE (CODE,LABEL,SUMMARY_TEXT) VALUES ('02','事務・管理','経理、人事、総務、法務、広報、物流、資材購買など');
+INSERT INTO JOBTYPE_FULL_LARGE (CODE,LABEL,SUMMARY_TEXT) VALUES ('03','企画・マーケティング・経営・管理職','商品・営業・経営企画、新規事業開発、管理職、MD、バイヤー、店舗開発など');
+INSERT INTO JOBTYPE_FULL_LARGE (CODE,LABEL,SUMMARY_TEXT) VALUES ('04','サービス・販売・外食','接客、美容、旅行、ホテル、航空、ブライダル、葬祭など');
+INSERT INTO JOBTYPE_FULL_LARGE (CODE,LABEL,SUMMARY_TEXT) VALUES ('05','Web・インターネット・ゲーム','ディレクター、デザイナー、データアナリスト、プロデューサーなど');
+INSERT INTO JOBTYPE_FULL_LARGE (CODE,LABEL,SUMMARY_TEXT) VALUES ('06','クリエイティブ（メディア・アパレル・デザイン）','グラフィック、広告、出版・印刷、映像、イベント、テレビ、芸能、ファッション、インテリア、空間など');
+INSERT INTO JOBTYPE_FULL_LARGE (CODE,LABEL,SUMMARY_TEXT) VALUES ('07','専門職（コンサルタント・士業・金融・不動産）','シンクタンク、アナリスト、トレーダー、FP、不動産管理など');
+INSERT INTO JOBTYPE_FULL_LARGE (CODE,LABEL,SUMMARY_TEXT) VALUES ('08','ITエンジニア（システム開発・SE・インフラ）','開発、プリセールス、設計、運用、社内SE、品質管理、研究、特許など');
+INSERT INTO JOBTYPE_FULL_LARGE (CODE,LABEL,SUMMARY_TEXT) VALUES ('09','エンジニア（機械・電気・電子・半導体・制御）','設計、開発、セールスエンジニア、研究、検査、製品評価など');
+INSERT INTO JOBTYPE_FULL_LARGE (CODE,LABEL,SUMMARY_TEXT) VALUES ('10','素材・化学・食品・医薬品技術職','半導体、化粧品、医療用具関連など');
+INSERT INTO JOBTYPE_FULL_LARGE (CODE,LABEL,SUMMARY_TEXT) VALUES ('11','建築・土木技術職','測量、設計、施工管理、研究開発など');
+INSERT INTO JOBTYPE_FULL_LARGE (CODE,LABEL,SUMMARY_TEXT) VALUES ('12','技能工・設備・交通・運輸','整備、工場生産、配送、警備、清掃など');
+INSERT INTO JOBTYPE_FULL_LARGE (CODE,LABEL,SUMMARY_TEXT) VALUES ('13','医療・福祉・介護','薬剤師、医師、看護師、ヘルパー、栄養士、ケアマネージャーなど');
+INSERT INTO JOBTYPE_FULL_LARGE (CODE,LABEL,SUMMARY_TEXT) VALUES ('14','教育・保育・公務員・農林水産','教師、講師、インストラクター、通訳、団体職員など');
+INSERT INTO JOBTYPE_FULL_LARGE (CODE,LABEL,SUMMARY_TEXT) VALUES ('99','その他','その他');
