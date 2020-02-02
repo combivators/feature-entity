@@ -30,7 +30,7 @@ import net.tiny.dao.entity.BaseEntity;
 public class Role extends BaseEntity {
 
     @Transient
-    private static final long serialVersionUID = -6614052029623997372L;
+    private static final long serialVersionUID = 1L;
 
     /** ID */
     @SequenceGenerator(name = "roleSequenceGenerator", sequenceName = "role_sequence", allocationSize=1)
@@ -40,8 +40,6 @@ public class Role extends BaseEntity {
     private Long id;
 
     /** 名称 */
-    //@NotEmpty
-    //@Length(max = 200)
     @Column(nullable = false, length = 200)
     private String name;
 
@@ -50,7 +48,6 @@ public class Role extends BaseEntity {
     private Boolean isSystem;
 
     /** 描述 */
-    //@Length(max = 200)
     @Column(length = 200)
     private String description;
 

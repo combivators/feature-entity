@@ -1,4 +1,6 @@
+create sequence account_sequence increment by 1 start with 0;
 create sequence admin_sequence increment by 1 start with 0;
+create sequence group_sequence increment by 1 start with 0;
 create sequence log_sequence increment by 1 start with 0;
 create sequence role_sequence increment by 1 start with 0;
 create sequence tag_sequence increment by 1 start with 0;

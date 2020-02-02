@@ -1,0 +1,2 @@
+site_name,site_url,site_enabled,powered_by,logo,seo,address,post,phone,email,smtp_host,smtp_port,smtp_user,smtp_password,public_key,private_key
+"Platform","http://localhost:8080/",true,"Terabox","/image/logo.png","Feature platform"

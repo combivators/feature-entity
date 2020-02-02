@@ -11,7 +11,6 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Index;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
@@ -25,23 +24,19 @@ import javax.validation.constraints.Pattern;
 import net.tiny.dao.entity.BaseEntity;
 
 /**
- * Entity - 管理员
+ * Entity - 认证账号
  *
  */
 @Entity
-@Table(name = "admin",
-       indexes = {
-           @Index(name = "admin_index_0", columnList = "username"),
-           @Index(name = "admin_index_1", columnList = "email")
-       })
-public class Admin extends BaseEntity {
+@Table(name = "account")
+public class Account extends BaseEntity {
 
     @Transient
     private static final long serialVersionUID = 1L;
 
     /** ID */
-    @SequenceGenerator(name = "adminSequenceGenerator", sequenceName = "admin_sequence", allocationSize=1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "adminSequenceGenerator")
+    @SequenceGenerator(name = "accountSequenceGenerator", sequenceName = "account_sequence", allocationSize=1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "accountSequenceGenerator")
     @Id
     @Column(name = "id")
     private Long id;
@@ -58,16 +53,16 @@ public class Admin extends BaseEntity {
     private String password;
 
     /** E-mail */
-    @Column(nullable = false, unique = true, length = 200)
+    @Column(nullable = false, length = 200)
     private String email;
 
-    /** 姓名 */
+    /** 表示名 */
     @Column(length = 200)
     private String name;
 
-    /** 部门 */
-    @Column(length = 200)
-    private String department;
+    /** 用户组 */
+//    @Column(length = 200)
+//    private String group;
 
     /** 是否启用 */
     @NotNull
@@ -94,19 +89,14 @@ public class Admin extends BaseEntity {
     @Column(name = "login_ip")
     private String loginIp;
 
-    /** 角色 */
+    /** 用户分组 */
     @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name="admin_role"
-        , joinColumns = {@JoinColumn(name = "admins", referencedColumnName = "id")}
-        , inverseJoinColumns = {@JoinColumn(name = "roles", referencedColumnName = "id")}
-        //, joinColumns=@JoinColumn(name="admins")
-        //, inverseJoinColumns=@JoinColumn(name="roles")
-        , uniqueConstraints = {@UniqueConstraint(columnNames = {"admins", "roles"})}
-        //, uniqueConstraints = {@UniqueConstraint(name = "fk_roles_admins", columnNames = {"admins", "roles"})}
-        //, foreignKey = @ForeignKey(name = "fk_admins_roles")
-        //, inverseForeignKey = @ForeignKey(name = "fk_roles_admins")
+    @JoinTable(name="account_group"
+        , joinColumns = {@JoinColumn(name = "accounts", referencedColumnName = "id")}
+        , inverseJoinColumns = {@JoinColumn(name = "groups", referencedColumnName = "id")}
+        , uniqueConstraints = {@UniqueConstraint(columnNames = {"accounts", "groups"})}
     )
-    private Set<Role> roles = new HashSet<Role>();
+    private Set<Group> groups = new HashSet<Group>();
 
     /**
      * 获取ID
@@ -203,23 +193,23 @@ public class Admin extends BaseEntity {
     }
 
     /**
-     * 获取部门
+     * 获取用户组
      *
-     * @return 部门
+     * @return 用户组门
      */
-    public String getDepartment() {
-        return department;
-    }
+//    public String getGroup() {
+//        return group;
+//    }
 
     /**
-     * 设置部门
+     * 设置用户组
      *
-     * @param department
-     *            部门
+     * @param group
+     *            用户组
      */
-    public void setDepartment(String department) {
-        this.department = department;
-    }
+//    public void setGroup(String group) {
+//        this.group = group;
+//    }
 
     /**
      * 获取是否启用
@@ -336,22 +326,22 @@ public class Admin extends BaseEntity {
     }
 
     /**
-     * 获取角色
+     * 获取用户分组
      *
-     * @return 角色
+     * @return 用户分组
      */
-    public Set<Role> getRoles() {
-        return roles;
+    public Set<Group> getGroups() {
+        return groups;
     }
 
     /**
-     * 设置角色
+     * 设置用户分组
      *
-     * @param roles
-     *            角色
+     * @param groups
+     *            用户分组
      */
-    public void setRoles(Set<Role> roles) {
-        this.roles = roles;
+    public void setGroups(Set<Group> groups) {
+        this.groups = groups;
     }
 
     /**
@@ -361,8 +351,8 @@ public class Admin extends BaseEntity {
      */
     public String getAuthorities() {
         StringBuilder sb = new StringBuilder();
-        for(Role role : roles) {
-            List<String> list = role.getAuthorities();
+        for(Group group : groups) {
+            List<String> list = group.getAuthorities();
             for(String auth : list) {
                 if(sb.length() > 0) {
                     sb.append(",");
@@ -372,4 +362,5 @@ public class Admin extends BaseEntity {
         }
         return sb.toString();
     }
+
 }

@@ -29,7 +29,7 @@ public class FieldDaoTest extends BaseDaoTest {
 
         long num = loader.load();
         System.out.println("field: " + num);
-        assertEquals(96, num);
+        assertEquals(102, num);
 
         List<Field> roots = dao.findRoots(null);
         assertEquals(19, roots.size());

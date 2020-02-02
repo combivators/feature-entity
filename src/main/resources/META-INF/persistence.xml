@@ -15,14 +15,17 @@
 
         <!-- Application Entities -->
         <class>net.tiny.feature.entity.BaseCategory</class>
+        <class>net.tiny.feature.entity.Account</class>
         <class>net.tiny.feature.entity.Ad</class>
         <class>net.tiny.feature.entity.AdPosition</class>
         <class>net.tiny.feature.entity.Admin</class>
         <class>net.tiny.feature.entity.Article</class>
         <class>net.tiny.feature.entity.ArticleCategory</class>
         <class>net.tiny.feature.entity.Author</class>
+        <class>net.tiny.feature.entity.Group</class>
         <class>net.tiny.feature.entity.Log</class>
         <class>net.tiny.feature.entity.Role</class>
+        <class>net.tiny.feature.entity.Setting</class>
         <class>net.tiny.feature.entity.Tag</class>
         <class>net.tiny.feature.entity.Thema</class>
 
