@@ -40,7 +40,7 @@ public class ArticleDaoTest extends BaseDaoTest {
                 articleCategoryDao.insert(articleCategory);
                 articleCategoryDao.flush();
             } else {
-                ArticleCategory parent = articleCategoryDao.find(articleCategoryIds[0]);
+                ArticleCategory parent = articleCategoryDao.find(articleCategoryIds[0]).get();
                 assertNotNull(parent);
                 articleCategory.setName(name);
                 articleCategory.setOrder(i);
@@ -57,9 +57,9 @@ public class ArticleDaoTest extends BaseDaoTest {
         super.commitAndContinue();
         assertEquals(new Long(1L), articleCategoryIds[0]);
 
-        ArticleCategory articleCategory = articleCategoryDao.find(articleCategoryIds[0]);
+        ArticleCategory articleCategory = articleCategoryDao.find(articleCategoryIds[0]).get();
         assertNotNull(articleCategory);
-        articleCategory = articleCategoryDao.find(articleCategoryIds[1]);
+        articleCategory = articleCategoryDao.find(articleCategoryIds[1]).get();
         assertNotNull(articleCategory);
 
         for (int i = 0; i < tagIds.length; i++) {
@@ -75,9 +75,9 @@ public class ArticleDaoTest extends BaseDaoTest {
         tagDao.clear();
         super.commitAndContinue();
 
-        Tag tag0 = tagDao.find(tagIds[0]);
-        Tag tag1 = tagDao.find(tagIds[1]);
-        Tag tag2 = tagDao.find(tagIds[2]);
+        Tag tag0 = tagDao.find(tagIds[0]).get();
+        Tag tag1 = tagDao.find(tagIds[1]).get();
+        Tag tag2 = tagDao.find(tagIds[2]).get();
         assertNotNull(tag0);
         assertNotNull(tag1);
         assertNotNull(tag2);
@@ -92,11 +92,11 @@ public class ArticleDaoTest extends BaseDaoTest {
             article.setHits(0L);
             ArticleCategory parent;
             if (i < 20) {
-                parent = articleCategoryDao.find(articleCategoryIds[0]);
+                parent = articleCategoryDao.find(articleCategoryIds[0]).get();
                 assertNotNull(parent);
                 article.setArticleCategory(parent);
             } else {
-                parent = articleCategoryDao.find(articleCategoryIds[1]);
+                parent = articleCategoryDao.find(articleCategoryIds[1]).get();
                 assertNotNull(parent);
                 article.setArticleCategory(parent);
             }

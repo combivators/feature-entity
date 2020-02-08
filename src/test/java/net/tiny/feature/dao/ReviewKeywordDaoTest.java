@@ -48,7 +48,7 @@ public class ReviewKeywordDaoTest extends BaseDaoTest {
         assertEquals(num , dao.count());
         System.out.println("review_keyword: " + num);
 
-        ReviewKeyword keyword = dao.find(1L);
+        ReviewKeyword keyword = dao.find(1L).get();
         assertNotNull(keyword);
         assertEquals("やりがいがある", keyword.getKeyword());
         ReviewKeywordCategory category = keyword.getCategory();

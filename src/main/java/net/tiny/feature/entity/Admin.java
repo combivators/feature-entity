@@ -5,6 +5,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -15,6 +16,7 @@ import javax.persistence.Index;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Transient;
@@ -80,7 +82,7 @@ public class Admin extends BaseEntity {
 
     /** 连续登录失败次数 */
     @Column(name = "login_failure_count", nullable = false)
-    private Integer loginFailureCount;
+    private Integer loginFailureCount = 0;
 
     /** 锁定日期 */
     @Column(name = "locked_date")
@@ -107,6 +109,10 @@ public class Admin extends BaseEntity {
         //, inverseForeignKey = @ForeignKey(name = "fk_roles_admins")
     )
     private Set<Role> roles = new HashSet<Role>();
+
+    /** 令牌 */
+    @OneToOne(cascade = CascadeType.ALL)
+    private Token token;
 
     /**
      * 获取ID
@@ -219,6 +225,25 @@ public class Admin extends BaseEntity {
      */
     public void setDepartment(String department) {
         this.department = department;
+    }
+
+    /**
+     * 获取令牌
+     *
+     * @return 令牌
+     */
+    public Token getToken() {
+        return token;
+    }
+
+    /**
+     * 设置令牌
+     *
+     * @param token
+     *            令牌
+     */
+    public void setToken(Token token) {
+        this.token = token;
     }
 
     /**

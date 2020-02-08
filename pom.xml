@@ -1,6 +1,6 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  xsi:schemaLocation="https://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>net.tiny</groupId>
   <artifactId>feature-entity</artifactId>
@@ -287,7 +287,8 @@
       <artifactId>hibernate-c3p0</artifactId>
       <version>5.4.1.Final</version>
     </dependency>
-    <!-- Conntion pool c3p0 Begin -->
+    <!-- Conntion pool c3p0 End -->
+
     <!-- Unit Testing -->
     <dependency>
       <groupId>net.tiny</groupId>

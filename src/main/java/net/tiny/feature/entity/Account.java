@@ -5,6 +5,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -14,6 +15,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Transient;
@@ -22,6 +24,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
 import net.tiny.dao.entity.BaseEntity;
+import net.tiny.feature.entity.secure.Email;
 
 /**
  * Entity - 认证账号
@@ -52,22 +55,14 @@ public class Account extends BaseEntity {
     @Column(nullable = false)
     private String password;
 
-    /** E-mail */
-    @Column(nullable = false, length = 200)
-    private String email;
-
     /** 表示名 */
     @Column(length = 200)
     private String name;
 
-    /** 用户组 */
-//    @Column(length = 200)
-//    private String group;
-
     /** 是否启用 */
     @NotNull
     @Column(name = "is_enabled", nullable = false)
-    private boolean isEnabled = true;
+    private boolean isEnabled = false;
 
     /** 是否锁定 */
     @Column(name = "is_locked", nullable = false)
@@ -75,7 +70,7 @@ public class Account extends BaseEntity {
 
     /** 连续登录失败次数 */
     @Column(name = "login_failure_count", nullable = false)
-    private Integer loginFailureCount;
+    private Integer loginFailureCount = 0;
 
     /** 锁定日期 */
     @Column(name = "locked_date")
@@ -97,6 +92,19 @@ public class Account extends BaseEntity {
         , uniqueConstraints = {@UniqueConstraint(columnNames = {"accounts", "groups"})}
     )
     private Set<Group> groups = new HashSet<Group>();
+
+    /** E-mail */
+    @OneToOne(mappedBy = "account", cascade = CascadeType.ALL, fetch = FetchType.LAZY,
+            orphanRemoval = true)
+    private Email email;
+
+    /** 令牌 */
+    @OneToOne(cascade = CascadeType.ALL)
+//    @JoinTable(name = "account_token",
+//        joinColumns = { @JoinColumn(name = "account_id", referencedColumnName = "id") },
+//        inverseJoinColumns = { @JoinColumn(name = "token_id", referencedColumnName = "id") })
+    private Token token;
+
 
     /**
      * 获取ID
@@ -159,7 +167,7 @@ public class Account extends BaseEntity {
      *
      * @return E-mail
      */
-    public String getEmail() {
+    public Email getEmail() {
         return email;
     }
 
@@ -169,7 +177,7 @@ public class Account extends BaseEntity {
      * @param email
      *            E-mail
      */
-    public void setEmail(String email) {
+    public void setEmail(Email email) {
         this.email = email;
     }
 
@@ -193,23 +201,23 @@ public class Account extends BaseEntity {
     }
 
     /**
-     * 获取用户组
+     * 获取令牌
      *
-     * @return 用户组门
+     * @return 令牌
      */
-//    public String getGroup() {
-//        return group;
-//    }
+    public Token getToken() {
+        return token;
+    }
 
     /**
-     * 设置用户组
+     * 设置令牌
      *
-     * @param group
-     *            用户组
+     * @param token
+     *            令牌
      */
-//    public void setGroup(String group) {
-//        this.group = group;
-//    }
+    public void setToken(Token token) {
+        this.token = token;
+    }
 
     /**
      * 获取是否启用

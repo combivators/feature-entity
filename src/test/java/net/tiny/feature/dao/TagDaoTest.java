@@ -40,8 +40,8 @@ public class TagDaoTest extends BaseDaoTest {
         assertTrue(tags.isEmpty());
 
         ArticleCategoryDao articleCategoryDao = createDao(ArticleCategoryDao.class);
-        ArticleCategory category = articleCategoryDao.find(1L);
-        assertNull(category);
+        ArticleCategory category = null;
+        assertFalse(articleCategoryDao.find(1L).isPresent());
 
         ArticleDao articleDao = createDao(ArticleDao.class);
         LocalDate beginDate = createDate("20000101");

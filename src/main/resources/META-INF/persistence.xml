@@ -28,6 +28,7 @@
         <class>net.tiny.feature.entity.Setting</class>
         <class>net.tiny.feature.entity.Tag</class>
         <class>net.tiny.feature.entity.Thema</class>
+        <class>net.tiny.feature.entity.Token</class>
 
         <class>net.tiny.feature.entity.Company</class>
         <class>net.tiny.feature.entity.Seeker</class>
@@ -39,6 +40,8 @@
         <class>net.tiny.feature.entity.ReviewKeywordCategory</class>
         <class>net.tiny.feature.entity.secure.Contact</class>
         <class>net.tiny.feature.entity.secure.Personal</class>
+        <class>net.tiny.feature.entity.secure.Email</class>
+        <class>net.tiny.feature.entity.secure.Phone</class>
 
         <exclude-unlisted-classes>false</exclude-unlisted-classes>
         <!-- <jar-file>file:./</jar-file> -->

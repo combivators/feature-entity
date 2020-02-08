@@ -16,6 +16,11 @@
         select a from Admin a where lower(a.username) = :username
         ]]></query>
      </named-query>
+     <named-query name="Account.findByUsername">
+        <query><![CDATA[
+        select a from Account a where lower(a.username) = :username
+        ]]></query>
+     </named-query>
      <named-query name="Tag.findList">
        <query>
         select t from Tag t where t.type = :type order by t.order ASC

@@ -92,7 +92,7 @@ public class JobCategoryDaoTest extends BaseDaoTest {
         System.out.println(JsonParser.marshal(root));
         Long id = root.getId();
         assertEquals(1L, id);
-        root = dao.find(id);
+        root = dao.find(id).get();
         System.out.println(JsonParser.marshal(root));
 
         List<JobCategory> children  = dao.findChildren(root, null);
