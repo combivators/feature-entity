@@ -78,6 +78,9 @@ public class Setting implements Serializable {
     @Column(nullable=false, length=10)
     private String jwt = "RS256";
 
+    @Column(name="auth_pattern", length=500)
+    private String authPattern;
+
     @Lob
     @Column(name="public_key", length=100000)
     private byte[] publicKey;
@@ -232,6 +235,14 @@ public class Setting implements Serializable {
         this.template = template;
     }
 
+    public String getAuthPattern() {
+        return authPattern;
+    }
+
+    public void setAuthPattern(String pattern) {
+        this.authPattern = pattern;
+    }
+
     public String getJwt() {
         return jwt;
     }
@@ -239,6 +250,7 @@ public class Setting implements Serializable {
     public void setJwt(String jwt) {
         this.jwt = jwt;
     }
+
 
     public byte[] getPublicKey() {
         return publicKey;
